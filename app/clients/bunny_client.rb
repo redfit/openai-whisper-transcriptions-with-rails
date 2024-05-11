@@ -7,9 +7,12 @@ class BunnyClient
     @library_id, @access_key = library_id, access_key
   end
 
+  def videos(page: 1, per_page: 1000)
+    get "videos?itemPerPage=#{per_page}&page=#{page}"
+  end
+
   def get(path)
     http_request(Net::HTTP::Get, "/library/#{@library_id}#{path}")
-
   end
 
   def post(path, body: nil)
@@ -18,7 +21,7 @@ class BunnyClient
 
   private
 
-    def http_request(method, path ,body: nil)
+    def http_request(method, path, body: nil)
       uri = URI.parse("#{BASE_URI}/library/#{@library_id}#{path}")
 
       http = Net::HTTP.new(url.host, uri.port)
