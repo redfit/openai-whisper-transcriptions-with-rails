@@ -34,4 +34,9 @@ class Bunny
       captions: item[:captions].any? { _1[:label] == 'English' }
     )
   end
+
+  def upload_captions(guid:, captions_path:)
+    content = Base64.encode64(File.read(captions_path))
+    post("/videos/#{guid}/captions/en", body: {srclang: "en", label: "English", captionsFile: content})
+  end
 end
