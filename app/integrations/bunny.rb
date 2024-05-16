@@ -3,7 +3,7 @@ class Bunny
 
   class << self
     def sync
-      new.sync
+      # new.sync
     end
   end
 
@@ -31,6 +31,8 @@ class Bunny
     video.update(
       library_id: item[:videoLibraryId],
       title: item[:title],
+      thumbnail_filename: item[:thumbnail_filename],
+      views_count: item[:views],
       captions: item[:captions].any? { _1[:label] == 'English' }
     )
   end

@@ -5,6 +5,8 @@ class CreateVideos < ActiveRecord::Migration[7.1]
       t.string :guid
       t.string :title
       t.boolean :captions, default: false
+      t.string :thumbnail_filename
+      t.integer :views_count
 
       t.timestamps
     end

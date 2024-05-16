@@ -1,4 +1,6 @@
 <div id="<%= dom_id video %>">
+  <%= image_tag video.thumbnail_url, class: "h-32 rounded-lg" %>
+  <h2><%= video.title %></h2>
   <p class="my-5">
     <strong class="block font-medium mb-1">Library:</strong>
     <%= video.library_id %>
@@ -14,9 +16,9 @@
     <%= video.title %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Captions:</strong>
-    <%= video.captions %>
-  </p>
-
+  <% if action_name != 'show' %>
+    <%= link_to "View", video, class: "rounded-lg py-3 px-5 by-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit", edit_video_path, class: "rounded-lg py-3 px-5 by-gray-100 inline-block font-medium" %>
+    <%= button_to "Transcribe", video_transcribe_path, method: :post, form_class: "inline-block", class: "rounded-lg py-3 px-5 by-gray-100 inline-block font-medium" %>
+  <% end %>
 </div>

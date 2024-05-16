@@ -3,7 +3,7 @@ class VideosController < ApplicationController
 
   # GET /videos or /videos.json
   def index
-    @videos = Video.all
+    @pagy, @videos = pagy Video.all
   end
 
   # GET /videos/1 or /videos/1.json

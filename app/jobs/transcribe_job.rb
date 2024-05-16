@@ -9,7 +9,7 @@ class TranscribeJob < ApplicationJob
     @video = video
     @tmp_dir = Dir.mktmpdir
 
-    download && extract_audio && transcribe && upload_captions
+    # download && extract_audio && transcribe && upload_captions
 
     video.update(caption: true)
   ensure
